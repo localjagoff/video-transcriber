@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Video Transcriber</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="https://unpkg.com/event-source-polyfill@1.0.31/src/eventsource.min.js"></script>
+</head>
+
+<body>
+
+<div class="toggle" onclick="toggleTheme()">🌓</div>
+
+<div class="wrapper">
+
+<div class="container">
+
+<h2>🎥 Video Transcriber</h2>
+<p class="info">Upload → choose language → get final transcript</p>
+
+<label>Quality:</label>
+<select id="quality">
+    <option value="tiny">⚡ Fast (quick, lower accuracy)</option>
+    <option value="base" selected>⚖️ Balanced (recommended)</option>
+    <option value="small">🎯 High Accuracy (slower, better results)</option>
+</select>
+
+<label>Output Language (type to search):</label>
+
+<div class="dropdown-input-wrapper">
+    <input id="languageInput" class="dropdown-input" value="Keep Original">
+    <div id="languageList" class="dropdown-list"></div>
+</div>
+
+<p class="info">Don't see your language? Just type it — all languages supported.</p>
+
+<!-- UPLOAD FIRST -->
+<div class="drop-zone" onclick="fileInput.click()">
+    Drag & Drop Files or Click
+    <input type="file" id="fileInput" multiple hidden>
+</div>
+
+<div id="fileList"></div>
+
+<button onclick="startQueue()">Start</button>
+
+<!-- URL MOVED HERE -->
+<label style="margin-top:20px;">Or paste video URL:</label>
+<input id="videoUrl" class="dropdown-input" placeholder="https://...">
+<button onclick="processUrl()">Transcribe URL</button>
+
+<div id="queue"></div>
+
+<p class="privacy">🔒 Files are processed locally and not stored.</p>
+
+<div class="disclaimer">
+<b>⚠️ Accuracy Notes:</b>
+<ul>
+<li>🔥 Spoken conversation → very accurate</li>
+<li>😬 Music / singing → less accurate</li>
+<li>❌ Fast lyrics → often imperfect</li>
+</ul>
+<p><b>This is NOT a lyrics extractor.</b></p>
+<p>Even YouTube captions sometimes get lyrics wrong.</p>
+</div>
+
+</div>
+
+<div class="side">
+<div class="donation-box">
+
+<h3>💜 Support This Tool</h3>
+
+<p class="donation-text">
+This tool is completely free and always will be.
+</p>
+
+<p class="donation-text">
+If it saved you time or helped you out, consider supporting its development.
+</p>
+
+<p class="donation-sub">
+Every donation helps keep it running and improving.
+</p>
+
+<a href="https://venmo.com/Atg412" target="_blank">
+<img src="{{ url_for('static', filename='images/venmo.png') }}" class="qr">
+</a>
+
+<a href="https://venmo.com/Atg412" target="_blank">
+<button class="venmo-btn">💸 Send via Venmo</button>
+</a>
+
+</div>
+</div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

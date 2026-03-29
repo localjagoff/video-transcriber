@@ -1,0 +1,112 @@
+
+VIDEO TRANSCRIBER — HOW TO USE + HANDOFF GUIDE
+Generated: 2026-03-29 21:31:04.154389
+
+----------------------------------------
+SETUP (FIRST TIME)
+----------------------------------------
+1. Install Python (3.9+ recommended)
+
+2. Install dependencies:
+pip install flask openai-whisper yt-dlp deep-translator librosa
+
+3. Install FFmpeg:
+- Download from https://ffmpeg.org/download.html
+- Add to system PATH
+
+4. (Optional) Demucs for enhancement:
+pip install demucs
+
+----------------------------------------
+RUNNING THE APP
+----------------------------------------
+1. Open terminal in project folder
+
+2. Start server:
+python app.py
+
+3. Open browser:
+http://127.0.0.1:5000
+
+----------------------------------------
+HOW TO USE
+----------------------------------------
+
+UPLOAD FILE:
+- Drag & drop or click upload
+- Select one or multiple files
+- Click START
+
+URL:
+- Paste YouTube/video link
+- Click “Transcribe URL”
+
+LANGUAGE:
+- Leave as “Keep Original” → no translation
+- Type “English” → best quality translation via Whisper
+- Type anything else → Google Translate used
+
+----------------------------------------
+WHAT YOU WILL SEE
+----------------------------------------
+Status flow:
+- Downloading...
+- Analyzing...
+- Enhancing... (if needed)
+- Transcribing... (with timer)
+- Done
+
+----------------------------------------
+FEATURES INCLUDED
+----------------------------------------
+- Multi-file queue (runs one at a time)
+- Cancel button per job
+- Copy transcript button
+- Download transcript (.txt)
+- Toast notification (“Copied!”)
+- Smart file naming (uses video title)
+- Keeps UI clean (clears old results)
+
+----------------------------------------
+IMPORTANT RULES (DO NOT BREAK)
+----------------------------------------
+- ALWAYS use FULL file replacements when editing
+- DO NOT redesign UI layout
+- KEEP dropdown inside wrapper
+- USE style.display for dropdown (not classes)
+- DO NOT break streaming (SSE)
+- DO NOT move language system
+
+----------------------------------------
+COMMON ISSUES + FIXES
+----------------------------------------
+
+ERROR: read of closed file
+→ Backend fix required (file must be saved BEFORE streaming)
+
+Dropdown not showing
+→ Ensure it's inside .dropdown-input-wrapper
+
+Nothing happens on click
+→ JS likely broken — check console
+
+----------------------------------------
+PROJECT STRUCTURE
+----------------------------------------
+/app.py
+/static/script.js
+/static/style.css
+/templates/index.html
+/uploads/
+
+----------------------------------------
+SAFE FUTURE IMPROVEMENTS
+----------------------------------------
+- Export subtitles (.srt)
+- Show detected language
+- Improve formatting
+- Keyboard navigation
+
+----------------------------------------
+END OF HANDOFF
+----------------------------------------
