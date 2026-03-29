@@ -142,5 +142,8 @@ def transcribe_stream():
 
     return Response(stream_with_context(generate()), mimetype="text/event-stream")
 
+import os
+
 if __name__ == "__main__":
-    app.run(debug=True, threaded=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, threaded=True)
